@@ -28,7 +28,7 @@ class BiomeGenFixer():
         if exists(level_dir):
             print("Parsing level.dat...")
             try:
-                self.nbt_file = nbt.NBTFile(level_dir)
+                self.nbt_file = nbt.NBTFile(level_dir, 'rb')
             except BadGzipFile as e:
                 print(f"I'm sorry, but the NBT file you entered was not valid. Make sure you entered the right one and that it is valid. ({e})")
                 sys.exit()
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     end_value = f["Data"]["WorldGenSettings"]["dimensions"][dimensions[0]]["generator"]["biome_source"]["type"].value
     nether_value = f["Data"]["WorldGenSettings"]["dimensions"][dimensions[1]]["generator"]["biome_source"]["type"].value
     print(f"Changing value type of biome source in dimension {dimensions[0]} from {end_value} to {bgf.end_choices[0]}")
-    end_value = bgf.end_choices[0]
+    f["Data"]["WorldGenSettings"]["dimensions"][dimensions[0]]["generator"]["biome_source"]["type"].value = bgf.end_choices[0]
     print(f"Changing value type of biome source in dimension {dimensions[1]} from {nether_value} to {bgf.nether_choices[0]}")
-    nether_value = bgf.nether_choices[0]
+    f["Data"]["WorldGenSettings"]["dimensions"][dimensions[1]]["generator"]["biome_source"]["type"].value = bgf.nether_choices[0]
     bgf.nbt_file.write_file("level.dat")
