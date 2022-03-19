@@ -49,7 +49,7 @@ if __name__ == "__main__":
     end_value = bgf.nbt_file["Data"]["WorldGenSettings"]["dimensions"][dimensions[0]]["generator"]["biome_source"]["type"].value
     nether_value = bgf.nbt_file["Data"]["WorldGenSettings"]["dimensions"][dimensions[1]]["generator"]["biome_source"]["type"].value
     print(f"Changing value type of biome source in dimension {dimensions[0]} from {end_value} to {bgf.end_choices[0]}")
-    end_value = bgf.end_choices[0]
+    bgf.nbt_file["Data"]["WorldGenSettings"]["dimensions"][dimensions[0]]["generator"]["biome_source"]["type"].value = bgf.end_choices[0]
     print(f"Changing value type of biome source in dimension {dimensions[1]} from {nether_value} to {bgf.nether_choices[0]}")
-    nether_value = bgf.nether_choices[0]
+    bgf.nbt_file["Data"]["WorldGenSettings"]["dimensions"][dimensions[1]]["generator"]["biome_source"]["type"].value = bgf.nether_choices[0]
     bgf.nbt_file.write_file()
