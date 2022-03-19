@@ -48,8 +48,8 @@ if __name__ == "__main__":
     from rich import inspect
     f = bgf.get_level_file()
     dimensions = ["minecraft:the_end", "minecraft:the_nether"]
-    end_value = f["Data"]["WorldGenSettings"]["dimensions"][dimensions[0]]["generator"]["biome_source"]["type"]
-    nether_value = f["Data"]["WorldGenSettings"]["dimensions"][dimensions[1]]["generator"]["biome_source"]["type"]
+    end_value = f["Data"]["WorldGenSettings"]["dimensions"][dimensions[0]]["generator"]["biome_source"]["type"].value
+    nether_value = f["Data"]["WorldGenSettings"]["dimensions"][dimensions[1]]["generator"]["biome_source"]["type"].value
     print(f"Changing value type of biome source in dimension {dimensions[0]} from {end_value} to {bgf.end_choices[0]}")
     end_value = bgf.end_choices[0]
     print(f"Changing value type of biome source in dimension {dimensions[1]} from {nether_value} to {bgf.nether_choices[0]}")
